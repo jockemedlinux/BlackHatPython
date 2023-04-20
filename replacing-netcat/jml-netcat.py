@@ -1,13 +1,7 @@
 #!/usr/bin/python3
 #@jockemedlinux
 
-import argparse
-import socket
-import shlex
-import subprocess
-import sys
-import textwrap
-import threading
+import argparse, socket, shlex, subprocces, sys, textwrap, threading
 
 def execute(cmd):
 	cmd = cmd.strip()
@@ -92,14 +86,16 @@ class NetCat:
 					client_socket.send(b'JML: #> ')
 					while '\n' not in cmd_buffer.decode():
 						cmd_buffer += client_socket.recv(64)
-					if not cmd_buffer.strip():								#fixed to check so that the buffer is not empty and thus terminating the server.
+					#fixed to check so that the buffer is not empty and thus terminating the server.
+					if not cmd_buffer.strip():
 						cmd_buffer = b''
 						continue
 					response = execute(cmd_buffer.decode())
 					if response:
 						client_socket.send(response.encode())
 					cmd_buffer = b''
-				except FileNotFoundError:									#fixed server terminating when entering command which is not found on server.
+				#fixed server terminating when entering command which is not found on server.
+				except FileNotFoundError:
 					client_socket.send(b'Unrecognized command.\n')
 					cmd_buffer = b''
 				except Exception as e:
