@@ -1,4 +1,4 @@
-So i finished the little netcat replacements with some of my own improvement.
+So i finished the netcat replacements section with some of my own improvement.
 
 1. The server died when entering empty string into buffer. Fixed by checking if the buffer is empty with if statement.
 2. The server kept dying when entering a command not known. Fixed by adding an except block "FileNotFoundError"
