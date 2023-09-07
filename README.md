@@ -1,4 +1,5 @@
 # BlackHatPython
+### Disclaimer - this repository is only for educational purposes
 
 https://nostarch.com/black-hat-python2E
 
